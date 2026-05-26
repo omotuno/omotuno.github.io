@@ -36,7 +36,7 @@ jobs:
         run: yarn --cwd ./landing install --frozen-lockfile
 
       - name: Install shelf dependencies
-        run: yarn --cwd ./shelf install --frozen-lockfile
+        run: yarn --cwd ./shelf install --no-lockfile
 
       - name: Build
         run: node -r esm scripts/build.js
