@@ -1,0 +1,49 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 14
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Get yarn cache directory
+        id: yarn-cache-dir
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install root dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Install landing dependencies
+        run: yarn --cwd ./landing install --frozen-lockfile
+
+      - name: Install shelf dependencies
+        run: yarn --cwd ./shelf install --frozen-lockfile
+
+      - name: Build
+        run: node -r esm scripts/build.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages

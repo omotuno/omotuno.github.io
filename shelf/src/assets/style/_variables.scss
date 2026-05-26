@@ -1,0 +1,32 @@
+// Default variables
+html {
+  --base-font-size: 20px;
+}
+
+// Data engineer color theme
+body {
+  --lime: #00cfb4;
+  --electric-blue: #0070f3;
+  --bg-color: #f0f8ff;
+  --bg-content-color: #f0f8ff;
+  --bg-code: #f5feff;
+  --body-color: #2d3748;
+  --title-color: #0a2540;
+  --link-color: #0070f3;
+  --border-color: #c8e6f5;
+  --space: 3.5rem;
+  --content-width: 940px;
+  --header-height: 80px;
+  --radius: 5px;
+}
+
+// Make  things smaller for mobile
+@media (max-width: 650px) {
+  html {
+    --base-font-size: 17px;
+  }
+  body {
+    --space: 1.5rem;
+    --header-height: 60px;
+  }
+}
