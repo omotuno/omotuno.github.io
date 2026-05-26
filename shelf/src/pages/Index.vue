@@ -1,8 +1,8 @@
 <template>
   <Layout
     id="list-of-posts"
-    title="Posts - Olaolu's shelf"
-    description="Articles on web development and design by Olaolu, expert frontend developer and UX Engineer"
+    title="Posts - Olusegun's Blog"
+    description="Articles on data engineering, cloud platforms, and tech for social good by Olusegun Omotunde"
   >
     <PageHeader title="shelf" noDot />
     <!-- List posts -->

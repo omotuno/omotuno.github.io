@@ -46,7 +46,7 @@ export default {
     twitterShareURL() {
       const { title } = this.$page.post
       return `https://twitter.com/intent/tweet?${encodeURIComponent(
-        `url=${this.shareableURL}&via=mrolaolu&text=${title}`
+        `url=${this.shareableURL}&text=${title}`
       )}`
     },
   },

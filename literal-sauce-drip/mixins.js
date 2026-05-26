@@ -40,15 +40,15 @@ export const SharedMixins = {
 
     seoURLs() {
       return {
-        'list-of-posts': 'https://olaolu.dev/shelf',
-        resume: 'https://olaolu.dev/resume',
-        work: 'https://olaolu.dev/work',
-        'post-page': 'https://olaolu.dev/shelf/' + this.$route.fullPath,
+        'list-of-posts': 'https://omotuno.github.io/shelf',
+        resume: 'https://omotuno.github.io/resume',
+        work: 'https://omotuno.github.io/work',
+        'post-page': 'https://omotuno.github.io/shelf/' + this.$route.fullPath,
       }
     },
 
     resumePDF() {
-      return this.landingURL + `/Resume-Olaolu-Olawuyi.pdf`
+      return this.landingURL + `/resume`
     },
 
     isHome() {

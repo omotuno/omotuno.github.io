@@ -34,7 +34,7 @@ export default {
 
     computedSeoURL() {
       const seoURL = this.isWorkLayout
-        ? 'https://olaolu.dev' + this.$route.fullPath
+        ? 'https://omotuno.github.io' + this.$route.fullPath
         : this.seoURLs[this.id]
 
       return unslashEnd(seoURL || '')
@@ -63,8 +63,6 @@ export default {
         { name: 'og:locale', content: 'en_US' },
         { name: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:site', content: '@mrolaolu' },
-        { name: 'twitter:creator', content: '@mrolaolu' },
       ],
     }
   },

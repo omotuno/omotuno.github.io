@@ -3,9 +3,9 @@
     method="POST"
     target="_blank"
     class="contact-form"
-    action="https://formspree.io/hello@olaolu.dev"
+    action="https://formspree.io/omotundejunior@gmail.com"
   >
-    <input type="hidden" name="_subject" value="Message from olaolu.dev!" />
+    <input type="hidden" name="_subject" value="Message from omotuno.github.io!" />
 
     <div class="form-row">
       <InputGroup

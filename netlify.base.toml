@@ -15,27 +15,17 @@
   compress = false
 [[redirects]]
   from = "/github"
-  to = "https://github.com/whizkydee"
+  to = "https://github.com/omotuno"
   status = 301
   force = true
 [[redirects]]
-  from = "/twitter"
-  to = "https://twitter.com/mrolaolu"
+  from = "/medium"
+  to = "https://medium.com/@olusegunomotunde"
   status = 301
   force = true
 [[redirects]]
-  from = "/music"
-  to = "https://soundcloud.com/kitanmusic"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/palenight"
-  to = "https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme"
-  status = 301
-  force = true
-[[redirects]]
-  from = "/palenight-repo"
-  to = "https://github.com/whizkydee/vscode-palenight-theme"
+  from = "/aws"
+  to = "https://builder.aws.com/"
   status = 301
   force = true
 [[redirects]]

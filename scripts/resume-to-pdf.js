@@ -8,7 +8,7 @@ let documentGenerated = false
 async function main() {
   try {
     const pdfURL = `http://localhost:${SHELF_PORT}/resume?pdf=true`
-    const pdfFilePath = 'landing/public/Resume-Olaolu-Olawuyi.pdf'
+    const pdfFilePath = 'landing/public/Resume-Olusegun-Omotunde.pdf'
 
     const browser = await puppeteer.launch()
     const page = await browser.newPage()

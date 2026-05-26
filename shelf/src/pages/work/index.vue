@@ -1,45 +1,22 @@
 <template>
   <StyledWork
     id="work"
-    title="Work - Olaolu's shelf"
-    description="Selected work including open source projects, experimentals and front-end apps by Olaolu"
+    title="Work - Olusegun Omotunde"
+    description="Data engineering projects, AI applications, and full stack systems by Olusegun Omotunde"
   >
     <PageHeader
       title="work"
-      desc="Selected projects I've worked on in the past."
+      desc="Projects coming soon."
     />
 
-    <section class="work-container">
-      <ul id="projects" aria-label="Projects.">
-        <li v-for="(project, key) in projects" :key="key" class="project">
-          <a
-            class="project__link"
-            :aria-label="project.summaryLinkLabel"
-            :target="!project.internalPage && '_blank'"
-            :rel="!project.internalPage && 'noopener noreferrer'"
-            :href="project.internalPage ? project.path : project.siteURL"
-            >{{ project.name }} project summary.</a
-          >
-
-          <figure class="project__logo">
-            <span v-html="project.logo" aria-hidden="true" />
-            <figcaption class="visuallyhidden">{{ project.name }} logo.</figcaption>
-          </figure>
-
-          <div class="project__info">
-            <h5>{{ project.name }}</h5>
-            <a
-              target="_blank"
-              v-if="project.siteName"
-              rel="noopener noreferrer"
-              :href="project.siteURL"
-              class="project__info__siteName"
-              :aria-label="project.name + ' live demo.'"
-              >{{ project.siteName }}</a
-            >
-          </div>
-        </li>
-      </ul>
+    <section class="work-container coming-soon-container">
+      <div class="coming-soon">
+        <p>
+          I'm currently building out this section with AI and data engineering
+          projects. Check back soon, or follow my work on
+          <a href="https://github.com/omotuno" target="_blank" rel="noopener noreferrer">GitHub</a>.
+        </p>
+      </div>
     </section>
   </StyledWork>
 </template>
@@ -67,6 +44,27 @@ const StyledWork = styled(Layout)`
 
   .page-header__heading {
     margin-bottom: 0;
+  }
+
+  .coming-soon-container {
+    margin-top: 3rem;
+  }
+
+  .coming-soon {
+    padding: 3rem 2rem;
+    border-radius: 0.5rem;
+    background: rgba(0, 207, 180, 0.06);
+    border: 1px solid rgba(0, 207, 180, 0.2);
+
+    p {
+      margin: 0;
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--electric-blue);
+    }
   }
 
   #projects {

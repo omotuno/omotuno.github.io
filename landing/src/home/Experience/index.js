@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import StyledExperience from './styles'
-import { OlaoluWorkIllo } from '@/assets'
+import { WorkIllo } from '@/assets'
 import { CURRENT_SECTION } from '@/constants'
 
 const Experience = Vue.component('Experience', {
@@ -64,7 +64,7 @@ const Experience = Vue.component('Experience', {
           </Cavalier>
 
           <figure class="work-illo" aria-hidden={!isVisible}>
-            <OlaoluWorkIllo />
+            <WorkIllo />
             <figcaption class="visuallyhidden">
               Illustration of Olusegun and his data engineering work.
             </figcaption>
