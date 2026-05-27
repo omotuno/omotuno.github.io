@@ -8,7 +8,7 @@ export default Vue.component('Visage', {
     return (
       <StyledFigure class="visage">
         <AvatarShapes id="avatar-shapes" data-shape />
-        <span class="handsome" aria-label="Photo of Olaolu." role="img" />
+        <span class="handsome" aria-label="Photo of Olusegun." role="img" />
       </StyledFigure>
     )
   },
@@ -31,7 +31,7 @@ const StyledFigure = styled.figure`
     background-size: cover;
     background-position-x: center;
     margin-left: -${FACE_MARGIN_LEFT};
-    background-image: url(/img/handsome.png);
+    background-image: url(/img/handsome.jpg);
   }
 
   #avatar-shapes {

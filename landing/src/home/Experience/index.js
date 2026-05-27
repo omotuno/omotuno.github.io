@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import StyledExperience from './styles'
-import { WorkIllo } from '@/assets'
 import { CURRENT_SECTION } from '@/constants'
 
 const Experience = Vue.component('Experience', {
   computed: mapState([CURRENT_SECTION]),
 
   render() {
-    const isVisible = this.currentSection === 'trois'
-
     return (
       <StyledExperience name={this.name}>
         <div class="inner-content">
@@ -20,33 +17,19 @@ const Experience = Vue.component('Experience', {
           >
             <p slot="text">
               I've built scalable data pipelines and cloud infrastructure that
-              transform complex, multi-source data into reliable systems driving
-              business outcomes. My work spans ETL/ELT pipeline development,
-              data warehouse architecture, and cloud platform engineering.
+              turn complex, multi-source data into reliable systems. My work
+              spans ETL/ELT pipeline development, data warehouse architecture
+              on Snowflake, and cloud platform engineering on AWS and GCP using
+              Python, SQL, PySpark, and Apache Spark.
             </p>
 
             <p slot="text">
-              My core competencies include designing high-throughput data
-              processing systems using Python, SQL, and modern cloud platforms
-              (AWS, GCP), with expertise in Snowflake, PySpark, and Apache
-              Spark. I specialize in migrating legacy data systems to modern
-              cloud architectures and implementing automated data quality
-              frameworks.
-            </p>
-
-            <p slot="text">
-              As an AWS Community Builder, I'm passionate about sharing
-              knowledge and best practices around cloud data engineering. Beyond
-              professional work, I'm committed to using data and technology for
-              social good through volunteer analytics projects.
-            </p>
-
-            <p slot="text">
-              My academic journey includes an M.S. in Applied Statistics
-              (Business Analytics &amp; Operations Research) from Bowling Green
-              State University, and I'm currently pursuing an MBA focused on
-              Information Technology. Earlier in my career, I worked in aviation
-              data analysis and financial systems in Nigeria.
+              As an AWS Community Builder, I share knowledge around cloud data
+              engineering and contribute to tech-for-good initiatives through
+              volunteer analytics work. I hold an M.S. in Applied Statistics
+              (Business Analytics and Operations Research) from Bowling Green
+              State University and am currently pursuing an MBA in Information
+              Technology.
             </p>
 
             {this.hireable && (
@@ -62,13 +45,6 @@ const Experience = Vue.component('Experience', {
               </p>
             )}
           </Cavalier>
-
-          <figure class="work-illo" aria-hidden={!isVisible}>
-            <WorkIllo />
-            <figcaption class="visuallyhidden">
-              Illustration of Olusegun and his data engineering work.
-            </figcaption>
-          </figure>
         </div>
       </StyledExperience>
     )
