@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6a3d237a2ff2a5a3bb73",
+    "revision": "b25156ffccf438771233",
     "url": "/css/app.b59a8d11.css"
   },
   {
-    "revision": "6a3d237a2ff2a5a3bb73",
-    "url": "/js/app.ab5da682.js"
+    "revision": "b25156ffccf438771233",
+    "url": "/js/app.da8c623e.js"
   },
   {
     "revision": "c07c431ebc232c76f9b0",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/js/chunk-vendors.7c8e1b0c.js"
   },
   {
-    "revision": "7fcd0aa4aed8619666d681b5181811a9",
+    "revision": "baba5e57b7e2c23309943f97a352822e",
     "url": "/index.html"
   },
   {
@@ -40,11 +40,11 @@ self.__precacheManifest = [
     "url": "/fonts/SF-UI-Text-RegularItalic.woff"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/robots.txt"
+    "revision": "ee2b0a9c295d4eb89a02ad3e82a9d1e5",
+    "url": "/img/handsome.jpg"
   },
   {
-    "revision": "a3a8986153a01cf1902842df14814c08",
-    "url": "/Resume-Olaolu-Olawuyi.pdf"
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "/robots.txt"
   }
 ];
