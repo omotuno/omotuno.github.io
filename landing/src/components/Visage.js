@@ -31,7 +31,7 @@ const StyledFigure = styled.figure`
     background-size: cover;
     background-position-x: center;
     margin-left: -${FACE_MARGIN_LEFT};
-    background-image: url(/img/handsome.jpg);
+    background-image: url(/img/handsome.png);
   }
 
   #avatar-shapes {

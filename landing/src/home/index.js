@@ -25,6 +25,7 @@ const Homepage = Vue.component('Homepage', {
   data: () => ({
     touchY: null,
     prevTime: new Date().getTime(),
+    navLockUntil: 0,
   }),
   computed: {
     ...mapState([CURRENT_SECTION]),
@@ -179,18 +180,19 @@ const Homepage = Vue.component('Homepage', {
       this.$store.commit('headerCompact', true)
     },
 
-    /**
-     * Determine if the page is being scrolled very fast
-     * within the specified period of time
-     * @param {number} ms
-     * @return {boolean}
-     */
     scrollingLudicrouslyFast(ms = 50) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime
-
       return timeDiff < ms
+    },
+
+    isNavLocked() {
+      return new Date().getTime() < this.navLockUntil
+    },
+
+    lockNav(ms = 850) {
+      this.navLockUntil = new Date().getTime() + ms
     },
 
     /**
@@ -203,39 +205,34 @@ const Homepage = Vue.component('Homepage', {
       this.touchY = event.touches[0].clientY
     },
 
-    /**
-     * GO to the next or previous section based on the
-     * touch move direction.
-     * @param {TouchEvent} event
-     * @return {void}
-     */
     handleTouchmove(event) {
       if (
         this.isMediumScreen ||
         !Array.isArray(event.changedTouches) ||
-        this.scrollingLudicrouslyFast()
+        this.isNavLocked()
       )
         return
 
       const curTouchY = event.changedTouches[0].clientY
 
-      if (this.touchY > curTouchY) this.goToNextSection()
-      else this.goToPrevSection()
+      if (this.touchY > curTouchY) {
+        this.lockNav()
+        this.goToNextSection()
+      } else {
+        this.lockNav()
+        this.goToPrevSection()
+      }
     },
 
-    /**
-     * GO to the next or previous section based on
-     * the mouse wheel direction.
-     * @param {MouseEvent} event
-     * @return {void}
-     */
     handleMouseWheel(event) {
-      if (this.isMediumScreen || this.scrollingLudicrouslyFast()) return
+      if (this.isMediumScreen || this.isNavLocked()) return
 
       switch (Math.sign(event.deltaY)) {
         case 1:
+          this.lockNav()
           return this.goToNextSection()
         case -1:
+          this.lockNav()
           return this.goToPrevSection()
       }
     },
