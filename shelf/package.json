@@ -13,8 +13,5 @@
     "@gridsome/transformer-remark": "0.5.0",
     "gridsome": "0.7.14",
     "vue-carousel": "^0.18.0"
-  },
-  "resolutions": {
-    "sharp": "0.28.3"
   }
 }
