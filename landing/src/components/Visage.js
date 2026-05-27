@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import { AvatarShapes } from '@/assets'
 import styled from 'vue-styled-components'
-import { FACE_MARGIN_LEFT } from '@/constants'
 
 export default Vue.component('Visage', {
   render() {
@@ -21,16 +20,16 @@ const StyledFigure = styled.figure`
   height: 24.67em;
   position: relative;
   border: 0.115rem solid #fff;
+  overflow: hidden;
 
   .handsome {
-    width: inherit;
+    width: 100%;
     display: block;
-    height: inherit;
-    margin-top: -2.435em;
+    height: 100%;
+    margin: 0;
     background-color: #fff;
     background-size: cover;
-    background-position-x: center;
-    margin-left: -${FACE_MARGIN_LEFT};
+    background-position: center top;
     background-image: url(/img/handsome.png);
   }
 
