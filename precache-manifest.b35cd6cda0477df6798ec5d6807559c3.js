@@ -40,15 +40,11 @@ self.__precacheManifest = [
     "url": "/fonts/SF-UI-Text-RegularItalic.woff"
   },
   {
-    "revision": "ee2b0a9c295d4eb89a02ad3e82a9d1e5",
-    "url": "/img/handsome.jpg"
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "/robots.txt"
   },
   {
     "revision": "a3a8986153a01cf1902842df14814c08",
     "url": "/Resume-Olaolu-Olawuyi.pdf"
-  },
-  {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/robots.txt"
   }
 ];
