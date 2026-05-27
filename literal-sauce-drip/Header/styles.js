@@ -57,31 +57,15 @@ const StyledHeader = css`
 
   &[data-compact='true'] {
     #logo {
-      width: unset;
-
-      svg {
-        transform: translateX(-3.5rem);
-      }
-
-      .logo_svg__lu,
       .logo_svg__ola {
         opacity: 0;
         pointer-events: none;
-      }
-
-      .logo_svg__ola {
-        transform: translateX(50%);
-        transform-origin: left;
-      }
-
-      .logo_svg__lu {
-        transform: translateX(-50%);
+        transform: translateX(10%);
       }
     }
   }
 
   &[data-compact='false'] {
-    .logo_svg__lu,
     .logo_svg__ola {
       transition: opacity 0.3s, transform 0.5s 100ms;
     }

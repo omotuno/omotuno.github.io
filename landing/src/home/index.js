@@ -185,7 +185,7 @@ const Homepage = Vue.component('Homepage', {
      * @param {number} ms
      * @return {boolean}
      */
-    scrollingLudicrouslyFast(ms = 100) {
+    scrollingLudicrouslyFast(ms = 50) {
       const curTime = new Date().getTime()
       const timeDiff = curTime - this.prevTime
       this.prevTime = curTime

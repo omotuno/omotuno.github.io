@@ -1,8 +1,8 @@
 export const colors = {
-  default: '#0a2540',
-  lime: '#00cfb4',
-  limeAlt: '#00b09b',
-  electricBlue: '#0070f3',
+  default: '#1a0533',
+  lime: '#ccf381',
+  limeAlt: '#b5d465',
+  electricBlue: '#5b21b6',
   white: '#fff',
   black: '#000',
 }
