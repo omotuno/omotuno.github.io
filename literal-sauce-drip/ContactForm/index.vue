@@ -1,49 +1,51 @@
 <template>
   <StyledContactForm class="contact-form">
-    <div v-if="succeeded" class="form-success" role="alert">
-      Thanks for reaching out! I'll get back to you soon.
-    </div>
-
-    <template v-else>
-      <div v-if="errorMessage" class="form-error" role="alert">
-        {{ errorMessage }}
+    <form @submit.prevent="handleSubmit" novalidate>
+      <div v-if="succeeded" class="form-success" role="alert">
+        Thanks for reaching out! I'll get back to you soon.
       </div>
 
-      <div class="form-row">
-        <InputGroup
-          required
-          name="name"
-          id="full-name"
-          label="Your Name"
-          placeholder="Enter your name"
-        />
+      <template v-else>
+        <div v-if="errorMessage" class="form-error" role="alert">
+          {{ errorMessage }}
+        </div>
 
-        <InputGroup
-          required
-          id="email"
-          type="email"
-          name="email"
-          label="Email Address"
-          placeholder="Enter your email address"
-        />
-      </div>
+        <div class="form-row">
+          <InputGroup
+            required
+            name="name"
+            id="full-name"
+            label="Your Name"
+            placeholder="Enter your name"
+          />
 
-      <div class="form-row">
-        <InputGroup
-          textarea
-          required
-          id="message"
-          name="message"
-          label="Your Message"
-          :inputAttrs="{ minlength: 30 }"
-          placeholder="Hi Olusegun, I'd love to discuss a data engineering project..."
-        />
-      </div>
+          <InputGroup
+            required
+            id="email"
+            type="email"
+            name="email"
+            label="Email Address"
+            placeholder="Enter your email address"
+          />
+        </div>
 
-      <Button type="submit" id="submit-button" :disabled="submitting">
-        {{ submitting ? 'Sending…' : 'Send Message' }}
-      </Button>
-    </template>
+        <div class="form-row">
+          <InputGroup
+            textarea
+            required
+            id="message"
+            name="message"
+            label="Your Message"
+            :inputAttrs="{ minlength: 30 }"
+            placeholder="Hi Olusegun, I'd love to discuss a data engineering project..."
+          />
+        </div>
+
+        <Button type="submit" id="submit-button" :disabled="submitting">
+          {{ submitting ? 'Sending…' : 'Send Message' }}
+        </Button>
+      </template>
+    </form>
   </StyledContactForm>
 </template>
 
@@ -61,17 +63,8 @@ export default {
     errorMessage: null,
   }),
 
-  mounted() {
-    this.$el.addEventListener('submit', this.handleSubmit)
-  },
-
-  beforeDestroy() {
-    this.$el.removeEventListener('submit', this.handleSubmit)
-  },
-
   methods: {
     async handleSubmit(event) {
-      event.preventDefault()
       this.submitting = true
       this.errorMessage = null
 
@@ -85,7 +78,6 @@ export default {
 
         if (response.ok) {
           this.succeeded = true
-          event.target.reset()
         } else {
           const json = await response.json()
           this.errorMessage =

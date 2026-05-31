@@ -2,7 +2,7 @@ import { media } from '../helpers'
 import styled from 'vue-styled-components'
 
 export default Object.assign(
-  styled.form`
+  styled.div`
     display: flex;
     position: relative;
     flex-direction: column;
