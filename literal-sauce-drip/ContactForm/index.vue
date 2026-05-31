@@ -1,48 +1,86 @@
 <template>
-  <StyledContactForm class="contact-form">
-    <form action="https://formspree.io/f/xgoqbdko" method="POST">
-      <div class="form-row">
-        <InputGroup
-          required
-          name="name"
-          id="full-name"
-          label="Your Name"
-          placeholder="Enter your name"
-        />
+  <div class="contact-cta">
+    <a
+      class="email-link"
+      :href="`mailto:${email}`"
+      aria-label="Send Olusegun an email"
+    >{{ email }}</a>
 
-        <InputGroup
-          required
-          id="email"
-          type="email"
-          name="email"
-          label="Email Address"
-          placeholder="Enter your email address"
-        />
-      </div>
-
-      <div class="form-row">
-        <InputGroup
-          textarea
-          required
-          id="message"
-          name="message"
-          label="Your Message"
-          :inputAttrs="{ minlength: 30 }"
-          placeholder="Hi Olusegun, I'd love to discuss a data engineering project..."
-        />
-      </div>
-
-      <Button type="submit" id="submit-button">Send Message</Button>
-    </form>
-  </StyledContactForm>
+    <button
+      class="copy-btn"
+      :class="{ copied }"
+      @click="copyEmail"
+      :aria-label="copied ? 'Copied!' : 'Copy email address'"
+      type="button"
+    >
+      <span>{{ copied ? 'Copied!' : 'Copy' }}</span>
+    </button>
+  </div>
 </template>
 
 <script>
-import Button from '../Button'
-import InputGroup from '../InputGroup'
-import StyledContactForm from './styles'
-
 export default {
-  components: { StyledContactForm, InputGroup, Button },
+  data: () => ({
+    email: 'omotundejunior@gmail.com',
+    copied: false,
+  }),
+
+  methods: {
+    copyEmail() {
+      navigator.clipboard.writeText(this.email).then(() => {
+        this.copied = true
+        setTimeout(() => { this.copied = false }, 2000)
+      })
+    },
+  },
 }
 </script>
+
+<style scoped>
+.contact-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  margin-top: 2em;
+}
+
+.email-link {
+  font-size: 1.4em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 0.1em;
+  transition: opacity 0.15s ease;
+}
+
+.email-link:hover {
+  opacity: 0.65;
+}
+
+.copy-btn {
+  background: none;
+  border: 1.5px solid currentColor;
+  border-radius: 2em;
+  padding: 0.45em 1.1em;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.copy-btn:hover,
+.copy-btn.copied {
+  background: currentColor;
+}
+
+.copy-btn:hover span,
+.copy-btn.copied span {
+  color: #f9f9f9;
+  mix-blend-mode: difference;
+}
+</style>
