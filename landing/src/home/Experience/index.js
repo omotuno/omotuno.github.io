@@ -12,29 +12,31 @@ const Experience = Vue.component('Experience', {
         <div class="inner-content">
           <Cavalier
             theme="lime"
-            heading={`Over the <br /> past ${new Date().getFullYear() -
-              2018} years,`}
+            heading="Over the <br /> past 8 years,"
           >
             <p slot="text">
-              I've built scalable data pipelines and cloud infrastructure that
-              turn complex, multi-source data into reliable systems. My work
-              spans ETL/ELT pipeline development, data warehouse architecture
-              on Snowflake, and cloud platform engineering on AWS and GCP using
-              Python, SQL, PySpark, and Apache Spark.
+              I have built scalable data and analytics infrastructure, and
+              increasingly, production AI systems that turn business problems
+              into working solutions. I am tool-agnostic by principle. I evaluate
+              technologies against your actual constraints, not trends. My work
+              spans data engineering, analytics systems, ETL/ELT pipelines, data
+              warehouse architecture, ML model deployment, and AI infrastructure
+              across healthcare, finance, enterprise tech, and civic technology.
             </p>
 
             <p slot="text">
-              As an AWS Community Builder, I share knowledge around cloud data
-              engineering and contribute to tech-for-good initiatives through
-              volunteer analytics work. I hold an M.S. in Applied Statistics
-              (Business Analytics and Operations Research) from Bowling Green
-              State University and am currently pursuing an MBA in Information
-              Technology.
+              AWS Community Builder sharing knowledge on cloud data engineering.
+              I hold a B.Sc in Finance, an MBA in Information Technology, and an
+              M.Sc in Applied Statistics specializing in Business Analytics and
+              Operations Research. I am currently pursuing an M.Sc in
+              Cybersecurity as AI system security becomes essential. I volunteer
+              analytics and data engineering work that solves social problems and
+              supports less privileged communities.
             </p>
 
             {this.hireable && (
               <p slot="text">
-                I'm available for data engineering projects and roles.{' '}
+                I am available for data engineering and AI projects.{' '}
                 <a
                   href={`mailto:omotundejunior@gmail.com?subject=${encodeURIComponent(
                     "Let's Work Together"

@@ -10,8 +10,8 @@ const Carriageway = Vue.component('Carriageway', {
           <div class="lanes">
             <div class="lane">
               <Cavalier
-                heading="I build <br/> data systems"
-                text="AI projects, <br/> data pipelines <br/> and cloud apps."
+                heading="I build"
+                text="Data systems, analytics pipelines, <br /> and AI infrastructure <br /> that solve business problems."
               />
 
               <Button url={this.workURL}>See my work</Button>
@@ -19,8 +19,8 @@ const Carriageway = Vue.component('Carriageway', {
 
             <div class="lane">
               <Cavalier
-                heading="I write, <br/> sometimes"
-                text="About data engineering, <br/> cloud platforms, <br/> and tech for good."
+                heading="I write"
+                text="About data engineering, <br /> AI systems, cloud platforms, <br /> and responsible deployment."
               />
 
               <Button url={this.shelfURL}>Read my Blog</Button>

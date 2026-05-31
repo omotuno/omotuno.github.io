@@ -12,13 +12,14 @@ const Cornerstone = Vue.component('Cornerstone', {
     return (
       <StyledCornerstone name={this.name}>
         <div class="inner-content">
-          <Cavalier heading="Data Engineering">
+          <Cavalier heading="Data Engineering and Analytics">
             <p slot="text">
-              I design and build high-throughput data processing systems using
-              Python, SQL, PySpark, and Apache Spark. My expertise spans ETL/ELT
-              pipeline development, data warehouse architecture on Snowflake, and
-              migrating legacy systems to modern cloud platforms, with a focus on
-              reliability and scale.
+              I design and build data pipelines and analytics systems that power
+              business decisions. My expertise spans ETL/ELT architecture, data
+              warehouse design on Snowflake, and analytics engineering using
+              Python, SQL, and PySpark. I combine data engineering fundamentals
+              with analytics rigor to create systems that are both reliable and
+              business-focused.
             </p>
 
             <SquareofDots
@@ -35,12 +36,14 @@ const Cornerstone = Vue.component('Cornerstone', {
             />
           </Cavalier>
 
-          <Cavalier heading="Cloud Infrastructure">
+          <Cavalier heading="AI Systems and Production ML">
             <p slot="text">
-              I specialize in AWS and GCP cloud platform engineering, building
-              automated data quality frameworks and monitoring solutions that
-              ensure data reliability at scale. Every system I design is built
-              to be resilient, observable, and production-grade.
+              I design and build AI systems that work in production. My expertise
+              spans RAG architecture, transformer model fine-tuning, ML
+              infrastructure deployment, and choosing the right tool for the
+              actual problem. I work with Python, SQL, LangChain, vector
+              databases, and cloud platforms. Every system is built to be
+              reliable, observable, and operationally feasible.
             </p>
 
             <CornerstonePatternsLeft

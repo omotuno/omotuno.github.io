@@ -15,12 +15,10 @@ const PitchSlate = Vue.component('PitchSlate', {
           class={'highlights' + (vocalize ? ' visuallyhidden' : '')}
         >
           <li>
-            6+ years building scalable data pipelines and cloud infrastructure
-            on AWS &amp; GCP.
+            6+ years building scalable data infrastructure and analytics systems on AWS and GCP.
           </li>
           <li>
-            Specializing in ETL/ELT pipelines, data warehouse architecture, and
-            production-grade data systems.
+            18+ months shipping production AI systems: RAG pipelines, fine-tuned models, ML deployment infrastructure.
           </li>
         </ul>
       )
@@ -37,11 +35,11 @@ const PitchSlate = Vue.component('PitchSlate', {
 
           <Cavalier
             theme="lime"
-            text="I transform complex, multi-source data into reliable systems that drive business outcomes."
+            text="I solve business problems with AI. I start with the actual constraint and build backward to the right solution, not the fanciest technology."
           >
-            <h1 slot="heading" aria-label="Data Engineer">
+            <h1 slot="heading" aria-label="AI Engineer">
               <span aria-hidden="true">
-                Data
+                AI
                 <br /> Engineer
                 <span>.</span>
               </span>
