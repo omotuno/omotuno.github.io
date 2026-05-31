@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "75b40c977af80f7e2fb0",
+    "revision": "c691017d9d21a3bed22d",
     "url": "/css/app.f8e55a91.css"
   },
   {
-    "revision": "75b40c977af80f7e2fb0",
-    "url": "/js/app.e05ad095.js"
+    "revision": "c691017d9d21a3bed22d",
+    "url": "/js/app.8f63d326.js"
   },
   {
     "revision": "c07c431ebc232c76f9b0",
@@ -16,12 +16,16 @@ self.__precacheManifest = [
     "url": "/js/chunk-vendors.7c8e1b0c.js"
   },
   {
-    "revision": "ba5d16ba1b75b878cafad5b7bec0c40c",
+    "revision": "43c704c788591e79bba8052163f21580",
     "url": "/index.html"
   },
   {
     "revision": "f79ef62801d1c171375782155a25348b",
     "url": "/fonts/SF-UI-Text-Bold.woff"
+  },
+  {
+    "revision": "a0551c66f62ad6916a46b1169d7474df",
+    "url": "/fonts/SF-UI-Text-Heavy.woff"
   },
   {
     "revision": "dcf70311333833bd34f350118ef3f644",
@@ -32,16 +36,12 @@ self.__precacheManifest = [
     "url": "/fonts/SF-UI-Text-Regular.woff"
   },
   {
-    "revision": "a0551c66f62ad6916a46b1169d7474df",
-    "url": "/fonts/SF-UI-Text-Heavy.woff"
+    "revision": "b01b6cbac3b12706f3cdd3bc3d5f9e06",
+    "url": "/fonts/SF-UI-Text-RegularItalic.woff"
   },
   {
     "revision": "55baf01f90963ee0ebd3baf2efabb322",
     "url": "/img/handsome.png"
-  },
-  {
-    "revision": "b01b6cbac3b12706f3cdd3bc3d5f9e06",
-    "url": "/fonts/SF-UI-Text-RegularItalic.woff"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
