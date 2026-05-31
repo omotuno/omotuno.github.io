@@ -1,7 +1,7 @@
 <template>
   <StyledContactForm
     class="contact-form"
-    @submit.prevent="handleSubmit"
+    @submit.native.prevent="handleSubmit"
   >
     <div v-if="succeeded" class="form-success" role="alert">
       Thanks for reaching out! I'll get back to you soon.
