@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.cd3c093a0b882b30d4bb949a60e82e2e.js"
+  "/precache-manifest.5b429cd1a1221e627ae84ba418218dd6.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "omotuno.github.io-landing"});

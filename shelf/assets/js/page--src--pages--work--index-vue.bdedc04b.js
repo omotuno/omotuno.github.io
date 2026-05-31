@@ -1,4 +1,4 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{256:function(e,t,n){"use strict";n.r(t);var o=n(5),a=[{name:"AI Data Pipeline",color:"rgba(0, 207, 180, .1)",logo:null,siteName:null,internalPage:!1,comingSoon:!0},{name:"Cloud Data Warehouse",color:"rgba(0, 112, 243, .1)",logo:null,siteName:null,internalPage:!1,comingSoon:!0},{name:"Full Stack App",color:"rgba(10, 37, 64, .08)",logo:null,siteName:null,internalPage:!1,comingSoon:!0}],i=n(55),r=n(35),l=n(0);let s,c,m=e=>e;Object(l.d)(s||(s=m`
+(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{258:function(e,t,n){"use strict";n.r(t);var o=n(5),a=[{name:"AI Data Pipeline",color:"rgba(0, 207, 180, .1)",logo:null,siteName:null,internalPage:!1,comingSoon:!0},{name:"Cloud Data Warehouse",color:"rgba(0, 112, 243, .1)",logo:null,siteName:null,internalPage:!1,comingSoon:!0},{name:"Full Stack App",color:"rgba(10, 37, 64, .08)",logo:null,siteName:null,internalPage:!1,comingSoon:!0}],i=n(55),r=n(35),l=n(0);let s,c,m=e=>e;Object(l.d)(s||(s=m`
   .is-tabbing .project__link:focus {
     outline: none;
 
