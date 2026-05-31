@@ -7,6 +7,17 @@ export default Object.assign(
     position: relative;
     flex-direction: column;
 
+    .form-success {
+      font-size: 1.15em;
+      padding: 1.5em 0;
+    }
+
+    .form-error {
+      color: #c0392b;
+      font-size: 1em;
+      margin-bottom: 1.5em;
+    }
+
     .form-row {
       width: 100%;
       display: flex;
