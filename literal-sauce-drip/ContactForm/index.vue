@@ -1,8 +1,5 @@
 <template>
-  <StyledContactForm
-    class="contact-form"
-    @submit.native.prevent="handleSubmit"
-  >
+  <StyledContactForm class="contact-form">
     <div v-if="succeeded" class="form-success" role="alert">
       Thanks for reaching out! I'll get back to you soon.
     </div>
@@ -64,8 +61,17 @@ export default {
     errorMessage: null,
   }),
 
+  mounted() {
+    this.$el.addEventListener('submit', this.handleSubmit)
+  },
+
+  beforeDestroy() {
+    this.$el.removeEventListener('submit', this.handleSubmit)
+  },
+
   methods: {
     async handleSubmit(event) {
+      event.preventDefault()
       this.submitting = true
       this.errorMessage = null
 
