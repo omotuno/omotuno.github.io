@@ -51,6 +51,21 @@ const StyledContact = styled(Section)`
     }
   }
 
+  .email-cta {
+    font-size: 1.6em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+    padding-bottom: 0.1em;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
   #home-contact {
     align-items: center;
     justify-content: center;
