@@ -5,7 +5,13 @@ module.exports = {
   productionSourceMap: false,
   devServer: { port: LANDING_PORT },
 
-  pwa: { themeColor: manifest.theme_color },
+  pwa: {
+    themeColor: manifest.theme_color,
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    },
+  },
   chainWebpack(config) {
     const FILE_RE = /\.(vue|js|ts|svg)$/
     config.module.rule('svg').issuer(file => !FILE_RE.test(file))
