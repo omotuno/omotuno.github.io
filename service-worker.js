@@ -14,10 +14,13 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.3c79eb1ba33700e8e98fb4eaff40d43d.js"
+  "/precache-manifest.0f4a61796c8859e39dc2fef712707b34.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "omotuno.github.io-landing"});
+
+workbox.skipWaiting();
+workbox.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
