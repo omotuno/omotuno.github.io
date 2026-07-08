@@ -12,35 +12,37 @@ const Experience = Vue.component('Experience', {
         <div class="inner-content">
           <Cavalier
             theme="lime"
-            heading="Over the <br /> past 8 years,"
+            heading="AI &amp; Systems Engineer"
           >
             <p slot="text">
-              I have built the data and analytics infrastructure businesses
-              actually run on: pipelines, warehouses, and reporting systems
-              across healthcare, finance, enterprise tech, and civic
-              technology. My path here started in finance, not software: a
-              B.Sc in Finance and an MBA in Information Technology taught me
-              to ask what a number actually means for the business before I
-              ever wrote a line of production code. AI systems have been a
-              natural extension of that same work, not a pivot. The
-              discipline that makes a data pipeline trustworthy is the same
-              discipline that makes an AI system safe to put in front of real
-              users.
+              I solve problems across the full stack: data reliability, AI
+              systems safety, and organizational security. I started in
+              finance, which taught me that numbers matter less than what
+              they mean for decisions. That lens carried through data
+              engineering (building infrastructure people trust), into AI
+              systems (shipping models safely to production), and now into
+              cybersecurity and AI evaluation (understanding where systems
+              fail and how to catch it before users do).
             </p>
 
             <p slot="text">
-              I hold an M.Sc in Applied Statistics focused on Business
-              Analytics and Operations Research. I'm also an AWS Community
-              Builder, a program that keeps me connected to a network of
-              practitioners I can trade ideas and real production lessons
-              with, and gives me a channel to share my own work publicly. I'm
-              currently pursuing an M.Sc in Cybersecurity, because as AI
-              systems move from pilot to production, security and evaluation
-              stop being optional. They're the difference between something
-              that's actually safe to ship and something that just looks
-              impressive in a demo. Outside client work, I volunteer
-              analytics and data engineering time to organizations serving
-              under-resourced communities.
+              Over 8 years, I've built data pipelines, analytics systems, and
+              production AI across healthcare, finance, enterprise tech, and
+              civic technology. The connective thread: discipline. The same
+              rigor that makes a data warehouse trustworthy makes an AI
+              system safe. The same thinking about security and evaluation
+              that protects infrastructure protects AI deployments.
+            </p>
+
+            <p slot="text">
+              I hold a B.Sc in Finance, MBA in Information Technology, and
+              M.Sc in Applied Statistics focused on Business Analytics and
+              Operations Research. I'm currently pursuing an M.Sc in
+              Cybersecurity because production AI requires security thinking
+              from day one, not bolted on after. I'm an AWS Community
+              Builder connected to practitioners shipping real systems, and I
+              volunteer analytics and engineering work to organizations
+              serving under-resourced communities.
             </p>
 
             {this.hireable && (

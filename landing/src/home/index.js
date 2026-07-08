@@ -2,16 +2,9 @@ import Vue from 'vue'
 import {
   SECTIONS,
   SECTION_MAP,
-  NAVIGATION_ID,
   CURRENT_SECTION,
 } from '@/constants'
-import {
-  wait,
-  debounce,
-  isMacintosh,
-  getEventPath,
-  elementInView,
-} from '@mrolaolu/helpers'
+import { getEventPath } from '@mrolaolu/helpers'
 import './home-styles'
 import { mapState } from 'vuex'
 import Contact from './Contact'
@@ -23,33 +16,15 @@ import { goToSection as GoToSection, getSections } from '@/helpers'
 
 const Homepage = Vue.component('Homepage', {
   data: () => ({
-    touchY: null,
-    prevTime: new Date().getTime(),
-    navLockUntil: 0,
+    revealedSections: [],
   }),
   computed: {
     ...mapState([CURRENT_SECTION]),
     firstSection: { get: () => SECTIONS[0] },
     lastSection: { get: () => SECTIONS[SECTIONS.length - 1] },
-    scrollableElems() {
-      return [
-        this.$el,
-        window.document.body,
-        this.$root.$el,
-        window.document.documentElement,
-      ]
-    },
     announcement() {
       const sectionName = SECTION_MAP[this.currentSection]
       return `You are now in the "${sectionName}" section.`
-    },
-    mostVisibleSection() {
-      return getSections().find(section => {
-        const sectionOffsetTop = parseInt(section.offsetTop)
-        const docElemScrollTop = parseInt(document.documentElement.scrollTop)
-
-        return Math.abs((sectionOffsetTop - docElemScrollTop) / 100) < 2 // 2 percent
-      })
     },
   },
 
@@ -58,49 +33,67 @@ const Homepage = Vue.component('Homepage', {
   },
 
   mounted() {
-    const { documentElement } = document
-
-    this.isMediumScreen || wait(1, this.maybeRestoreSection)
-
     // Set current section to the first section by default.
     this.$root.$el.dataset[CURRENT_SECTION] = this.currentSection
+    this.revealedSections = [this.currentSection]
 
-    window.addEventListener('resize', this.handleResize)
-    document.addEventListener('keydown', this.maybeScrollJack)
-    document.addEventListener('touchstart', this.handleTouchstart)
-    document.addEventListener('touchmove', this.handleTouchmove, {
-      passive: false,
+    // Fades a section in the first time it scrolls into view, then
+    // leaves it visible - normal long-scroll behavior, not a pinned jump.
+    this.revealObserver = new IntersectionObserver(this.handleSectionReveal, {
+      threshold: 0.15,
     })
-    documentElement.addEventListener('wheel', this.handleMouseWheel, false)
-    documentElement.addEventListener('mousewheel', this.handleMouseWheel, false)
+
+    // Tracks whichever section is crossing the vertical center of the
+    // viewport, to drive the sticky nav's active dot and the header style.
+    this.trackObserver = new IntersectionObserver(this.handleSectionTrack, {
+      rootMargin: '-45% 0px -45% 0px',
+    })
+
+    getSections().forEach(section => {
+      this.revealObserver.observe(section)
+      this.trackObserver.observe(section)
+    })
+
+    document.addEventListener('keydown', this.maybeJumpToEdge)
   },
 
   beforeDestroy() {
-    const { documentElement: docElem } = document
-
-    window.removeEventListener('resize', this.handleResize)
-    document.removeEventListener('keydown', this.maybeScrollJack)
-    docElem.removeEventListener('wheel', this.handleMouseWheel, false)
-    docElem.removeEventListener('mousewheel', this.handleMouseWheel, false)
-    document.removeEventListener('touchstart', this.handleTouchstart)
-    document.removeEventListener('touchmove', this.handleTouchmove, {
-      passive: false,
-    })
+    document.removeEventListener('keydown', this.maybeJumpToEdge)
+    this.revealObserver && this.revealObserver.disconnect()
+    this.trackObserver && this.trackObserver.disconnect()
   },
 
   methods: {
     /**
-     * Determine if the specified section is hidden.
+     * Determine if the specified section has not yet scrolled into
+     * view. Once revealed, a section stays revealed.
      * @param {string} id - the id of the section to check
      * @return {'true' | 'false'}
      */
     isSectionHidden(id) {
-      const hidden = this.isMaxHeight
-        ? this.currentSection !== id
-        : this.getSection(id) instanceof HTMLElement &&
-          !elementInView(this.getSection(id), { threshold: 0.5 })
+      return String(!this.revealedSections.includes(id))
+    },
 
-      return String(hidden)
+    handleSectionReveal(entries) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+
+        const id = entry.target.dataset.section
+        if (!this.revealedSections.includes(id)) {
+          this.revealedSections = [...this.revealedSections, id]
+        }
+        this.revealObserver.unobserve(entry.target)
+      })
+    },
+
+    handleSectionTrack(entries) {
+      const visible = entries.find(entry => entry.isIntersecting)
+      if (!visible) return
+
+      const id = visible.target.dataset.section
+      this.$store.commit(CURRENT_SECTION, id)
+      this.$root.$el.dataset[CURRENT_SECTION] = id
+      this.$store.commit('headerCompact', id !== this.firstSection)
     },
 
     /**
@@ -113,16 +106,6 @@ const Homepage = Vue.component('Homepage', {
     goToSection(...args) {
       if (this.isMediumScreen) return // don't call rAF on medium screens
       return GoToSection(this.$store, ...args)
-    },
-
-    /**
-     * Recalculate position of the current section
-     * then adjust based on that information.
-     * @return {void}
-     */
-    recalcSection() {
-      const currentSection = this.getSection()
-      this.goToSection({ node: currentSection, smooth: false })
     },
 
     /**
@@ -158,141 +141,21 @@ const Homepage = Vue.component('Homepage', {
     },
 
     /**
-     * Set current section to the most visible section upon
-     * reload (if we're able to determine that), otherwise, just
-     * reset the document scroll.
-     * @return {number | void}
-     */
-    maybeRestoreSection() {
-      if (!this.mostVisibleSection) return wait(100, resetScroll)
-
-      const resetScroll = () => {
-        Object.assign(document.documentElement, {
-          scrollTop: 0,
-          scrollLeft: 0,
-        })
-      }
-
-      this.goToSection({ focus: false, node: this.mostVisibleSection })
-
-      // don't enable header compact style if we're on the first section.
-      if (this.currentSection === this.firstSection) return
-      this.$store.commit('headerCompact', true)
-    },
-
-    scrollingLudicrouslyFast(ms = 50) {
-      const curTime = new Date().getTime()
-      const timeDiff = curTime - this.prevTime
-      this.prevTime = curTime
-      return timeDiff < ms
-    },
-
-    isNavLocked() {
-      return new Date().getTime() < this.navLockUntil
-    },
-
-    lockNav(ms = 850) {
-      this.navLockUntil = new Date().getTime() + ms
-    },
-
-    /**
-     * Register the last horizontal touch position.
-     * @param {TouchEvent} event
+     * Home/End still jump to the first/last section; all other
+     * scrolling (wheel, arrows, touch) is now native browser scroll.
+     * @param {KeyboardEvent} event
      * @return {void}
      */
-    handleTouchstart(event) {
-      if (!Array.isArray(event.touches) || this.isMediumScreen) return
-      this.touchY = event.touches[0].clientY
-    },
-
-    handleTouchmove(event) {
-      if (
-        this.isMediumScreen ||
-        !Array.isArray(event.changedTouches) ||
-        this.isNavLocked()
-      )
-        return
-
-      const curTouchY = event.changedTouches[0].clientY
-
-      if (this.touchY > curTouchY) {
-        this.lockNav()
-        this.goToNextSection()
-      } else {
-        this.lockNav()
-        this.goToPrevSection()
-      }
-    },
-
-    handleMouseWheel(event) {
-      if (this.isMediumScreen || this.isNavLocked()) return
-
-      switch (Math.sign(event.deltaY)) {
-        case 1:
-          this.lockNav()
-          return this.goToNextSection()
-        case -1:
-          this.lockNav()
-          return this.goToPrevSection()
-      }
-    },
-
-    /**
-     * When the window is resized, recalculate the
-     * position of the current section.
-     * @return {void}
-     */
-    handleResize() {
-      return debounce(this.recalcSection, 200)()
-    },
-
-    /**
-     * Hijack scrolling.
-     * @param {Event} event
-     * @return {void}
-     */
-    maybeScrollJack(event) {
+    maybeJumpToEdge(event) {
       if (this.isMediumScreen || !event) return
 
-      const SPACEBAR = [' ', 'Spacebar']
-      const isCommandKey = () => isMacintosh() && event.metaKey
-      const downwardKeys = [
-        'Down',
-        ...SPACEBAR,
-        'ArrowDown',
-        'Right',
-        'PageDown',
-        'ArrowRight',
-      ]
-      const upwardKeys = ['Up', 'ArrowUp', 'Left', 'PageUp', 'ArrowLeft']
-      const isScrollableElemFocused = this.scrollableElems.includes(
-        event.target
-      )
+      const isFormFocused = getEventPath(event)
+        .filter(el => el instanceof HTMLElement)
+        .some(el => el.tagName === 'FORM')
 
-      const inEventPath = predicate =>
-        getEventPath(event)
-          .filter(el => el instanceof HTMLElement)
-          .some(predicate)
+      if (isFormFocused) return
 
-      const isNavFocused = inEventPath(el => el && el.id === NAVIGATION_ID)
-      const isSectionFocused = inEventPath(el => el && el.dataset.section)
-      const isFormFocused = inEventPath(el => el && el.tagName === 'FORM')
-
-      if (
-        isFormFocused ||
-        this.scrollingLudicrouslyFast(500) ||
-        !(isNavFocused || isSectionFocused || isScrollableElemFocused)
-      ) {
-        return // ...do not scroll!
-      }
-
-      if (downwardKeys.includes(event.key)) {
-        event.preventDefault()
-        isCommandKey() ? this.goToLastSection() : this.goToNextSection()
-      } else if (upwardKeys.includes(event.key)) {
-        event.preventDefault()
-        isCommandKey() ? this.goToFirstSection() : this.goToPrevSection()
-      } else if (event.key === 'Home') {
+      if (event.key === 'Home') {
         event.preventDefault()
         this.goToFirstSection()
       } else if (event.key === 'End') {

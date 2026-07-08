@@ -51,7 +51,7 @@ function createStyledSection(tagName = 'section', props = {}) {
     ${media.minWidth('>medium')`
       @media (max-height: 1199px) {
         &:not([data-section='une']) {
-          height: 100vh;
+          min-height: 100vh;
         }
       }
 
