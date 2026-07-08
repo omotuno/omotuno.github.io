@@ -44,6 +44,8 @@ function createStyledSection(tagName = 'section', props = {}) {
       @media (max-height: 1199px) {
         ${media.minWidth('>medium')`
           min-height: 100vh;
+          padding-top: 10rem;
+          padding-bottom: 10rem;
         `}
       }
     }

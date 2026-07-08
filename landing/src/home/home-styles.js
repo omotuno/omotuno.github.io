@@ -10,15 +10,6 @@ import { injectGlobal } from 'vue-styled-components'
 
 const StyledHomepage = injectGlobal`
   html {
-    ${media.minWidth('>medium')`
-      overflow: hidden;
-
-      &,
-      body {
-        touch-action: none;
-      }
-    `}
-
     ${media.maxWidth('medium')`
       &,
       body {
@@ -112,11 +103,6 @@ const StyledHomepage = injectGlobal`
   main {
     outline: none;
     -webkit-overflow-scrolling: touch;
-
-    ${media.minWidth('>medium')`
-      touch-action: none;
-      scroll-snap-type: y mandatory;
-    `}
   }
 
   .square-of-dots {

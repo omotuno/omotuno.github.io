@@ -37,10 +37,13 @@ const Homepage = Vue.component('Homepage', {
     this.$root.$el.dataset[CURRENT_SECTION] = this.currentSection
     this.revealedSections = [this.currentSection]
 
-    // Fades a section in the first time it scrolls into view, then
+    // Fades a section in as soon as it starts entering the viewport, then
     // leaves it visible - normal long-scroll behavior, not a pinned jump.
+    // threshold: 0 (not a % of the section's own area) so tall sections
+    // reveal immediately instead of staying invisible until deep-scrolled.
     this.revealObserver = new IntersectionObserver(this.handleSectionReveal, {
-      threshold: 0.15,
+      threshold: 0,
+      rootMargin: '0px 0px -10% 0px',
     })
 
     // Tracks whichever section is crossing the vertical center of the
