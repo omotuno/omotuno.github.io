@@ -614,6 +614,8 @@ var n=Object.freeze({});function r(t){return null==t}function o(t){return null!=
         }
       `)),A(">medium")(at||(at=mt`
           min-height: 100vh;
+          padding-top: 10rem;
+          padding-bottom: 10rem;
         `)),A(">medium")(ct||(ct=mt`
       @media (max-height: 1199px) {
         &:not([data-section='une']) {
