@@ -15,23 +15,32 @@ const Experience = Vue.component('Experience', {
             heading="Over the <br /> past 8 years,"
           >
             <p slot="text">
-              I have built scalable data and analytics infrastructure, and
-              increasingly, production AI systems that turn business problems
-              into working solutions. I am tool-agnostic by principle. I evaluate
-              technologies against your actual constraints, not trends. My work
-              spans data engineering, analytics systems, ETL/ELT pipelines, data
-              warehouse architecture, ML model deployment, and AI infrastructure
-              across healthcare, finance, enterprise tech, and civic technology.
+              I have built the data and analytics infrastructure businesses
+              actually run on: pipelines, warehouses, and reporting systems
+              across healthcare, finance, enterprise tech, and civic
+              technology. My path here started in finance, not software: a
+              B.Sc in Finance and an MBA in Information Technology taught me
+              to ask what a number actually means for the business before I
+              ever wrote a line of production code. AI systems have been a
+              natural extension of that same work, not a pivot. The
+              discipline that makes a data pipeline trustworthy is the same
+              discipline that makes an AI system safe to put in front of real
+              users.
             </p>
 
             <p slot="text">
-              AWS Community Builder sharing knowledge on cloud data engineering.
-              I hold a B.Sc in Finance, an MBA in Information Technology, and an
-              M.Sc in Applied Statistics specializing in Business Analytics and
-              Operations Research. I am currently pursuing an M.Sc in
-              Cybersecurity as AI system security becomes essential. I volunteer
-              analytics and data engineering work that solves social problems and
-              supports less privileged communities.
+              I hold an M.Sc in Applied Statistics focused on Business
+              Analytics and Operations Research. I'm also an AWS Community
+              Builder, a program that keeps me connected to a network of
+              practitioners I can trade ideas and real production lessons
+              with, and gives me a channel to share my own work publicly. I'm
+              currently pursuing an M.Sc in Cybersecurity, because as AI
+              systems move from pilot to production, security and evaluation
+              stop being optional. They're the difference between something
+              that's actually safe to ship and something that just looks
+              impressive in a demo. Outside client work, I volunteer
+              analytics and data engineering time to organizations serving
+              under-resourced communities.
             </p>
 
             {this.hireable && (
